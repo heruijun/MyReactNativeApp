@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/navigation_fast"
+        android:icon="@mipmap/icon_nav_item_fast"
+        android:title="@string/title_fast"/>
+
+    <item
+        android:id="@+id/navigation_home"
+        android:icon="@mipmap/icon_nav_item_home"
+        android:title="@string/title_home"/>
+
+    <item
+        android:icon="@null"
+        android:title=""/>
+
+    <item
+        android:id="@+id/navigation_manager"
+        android:icon="@mipmap/icon_nav_item_message"
+        android:title="@string/title_manager"/>
+
+    <item
+        android:id="@+id/navigation_mine"
+        android:icon="@mipmap/icon_nav_item_user"
+        android:title="@string/title_mine"/>
+
+</menu>

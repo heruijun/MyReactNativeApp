@@ -1,0 +1,27 @@
+<resources>
+    <string name="app_name">蘑菇伙伴</string>
+    <string name="tab_1">Label 1</string>
+    <string name="tab_2">Label 2</string>
+    <string name="tab_3">Label 3</string>
+    <string name="tab_4">Label 4</string>
+
+    <string name="menu_1">工作台</string>
+    <string name="menu_2">房源</string>
+    <string name="menu_3">管理</string>
+    <string name="menu_4">我的</string>
+
+    <string name="home_image_view_text">首页</string>
+    <string name="room_image_view_text">房源</string>
+    <string name="message_image_view_text">管理</string>
+    <string name="mine_image_view_text">我的</string>
+    <string name="title_activity_main">MainActivity</string>
+    <string name="title_fast">工作台</string>
+    <string name="title_home">房源</string>
+    <string name="title_manager">管理</string>
+    <string name="title_mine">我的</string>
+    <string name="title_activity_main2">Main2Activity</string>
+    <string name="title_activity_test">TestActivity</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+
+</resources>
