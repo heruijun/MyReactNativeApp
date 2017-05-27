@@ -1,12 +1,12 @@
 package com.myapp.di.modules;
 
+import com.example.com.modules.CustomReactPackage;
 import com.facebook.react.ReactInstanceManager;
 import com.facebook.react.common.LifecycleState;
 import com.facebook.react.shell.MainReactPackage;
 import com.imagepicker.ImagePickerPackage;
 import com.microsoft.codepush.react.CodePush;
 import com.myapp.MainApplication;
-import com.myapp.rnmodules.CustomReactPackage;
 
 import javax.inject.Singleton;
 

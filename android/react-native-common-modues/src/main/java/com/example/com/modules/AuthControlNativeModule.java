@@ -1,4 +1,4 @@
-package com.myapp.rnmodules;
+package com.example.com.modules;
 
 import android.app.Activity;
 import android.support.annotation.NonNull;
@@ -10,8 +10,6 @@ import com.facebook.react.bridge.ReactApplicationContext;
 import com.facebook.react.bridge.ReactContextBaseJavaModule;
 import com.facebook.react.bridge.ReactMethod;
 import com.facebook.react.bridge.WritableArray;
-
-import org.jetbrains.annotations.NotNull;
 
 /**
  * Created by heruijun on 2017/3/6.
@@ -32,7 +30,7 @@ public class AuthControlNativeModule extends ReactContextBaseJavaModule {
     }
 
     @ReactMethod
-    public void getAuthCodes(@NotNull String moduleName, @NonNull final Callback callback) {
+    public void getAuthCodes(@NonNull String moduleName, @NonNull final Callback callback) {
         Activity currentActivity = getCurrentActivity();
         if (currentActivity == null) {
             callback.invoke("can't find current Activity");

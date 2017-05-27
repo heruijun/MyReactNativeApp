@@ -1,4 +1,4 @@
-package com.myapp.rnmodules;
+package com.example.com.modules;
 
 import android.app.Activity;
 import android.content.ActivityNotFoundException;
@@ -10,8 +10,6 @@ import com.facebook.react.bridge.Callback;
 import com.facebook.react.bridge.ReactApplicationContext;
 import com.facebook.react.bridge.ReactContextBaseJavaModule;
 import com.facebook.react.bridge.ReactMethod;
-
-import org.jetbrains.annotations.NotNull;
 
 /**
  * Created by heruijun on 2017/3/6.
@@ -34,7 +32,7 @@ public class IntentNativeModule extends ReactContextBaseJavaModule implements Ac
     }
 
     @ReactMethod
-    public void intent(@NotNull String action, @NonNull final Callback callback) {
+    public void intent(@NonNull String action, @NonNull final Callback callback) {
         Activity currentActivity = getCurrentActivity();
         if (currentActivity == null) {
             callback.invoke("can't find current Activity");
