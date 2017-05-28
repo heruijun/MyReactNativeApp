@@ -7,12 +7,12 @@ import com.myapp.BaseReactActivity;
 /**
  * Created by heruijun on 2017/2/23.
  */
-public class RNActivity extends BaseReactActivity {
+public class RNComponentActivity extends BaseReactActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        mReactRootView.startReactApplication(mReactInstanceManager, "operatingStatement", null);
+        mReactRootView.startReactApplication(mReactInstanceManager, "rnComponent", null);
         setContentView(mReactRootView);
     }
 }

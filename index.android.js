@@ -13,12 +13,16 @@ import {
 } from 'react-native'
 import NavBar from './app/component/NavBar'
 
-import Home from './app/pages/Home';
-import Room from './app/pages/Room';
-import Manager from './app/pages/Manager';
-import Mine from './app/pages/Mine';
+import Home from './app/pages/Home'
+import Room from './app/pages/Room'
+import Manager from './app/pages/Manager'
+import Mine from './app/pages/Mine'
+import OperatingStatement from './app/pages/OperatingStatement'
+import RNComponent from './app/pages/RNComponent'
 
-AppRegistry.registerComponent('rntest', () => Home);
-AppRegistry.registerComponent('rn2test', () => Room);
-AppRegistry.registerComponent('rn3test', () => Manager);
-AppRegistry.registerComponent('rn4test', () => Mine);
+AppRegistry.registerComponent('rntest', () => Home)
+AppRegistry.registerComponent('rn2test', () => Room)
+AppRegistry.registerComponent('rn3test', () => Manager)
+AppRegistry.registerComponent('rn4test', () => Mine)
+AppRegistry.registerComponent('operatingStatement', () => OperatingStatement)
+AppRegistry.registerComponent('rnComponent', () => RNComponent)

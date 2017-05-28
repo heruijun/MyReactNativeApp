@@ -3,6 +3,7 @@ package com.myapp.activity;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
@@ -131,8 +132,8 @@ public class MainActivity extends BaseReactActivity implements OnImagePickerPerm
         mMainLayout = (FrameLayout) findViewById(R.id.main_layout);
         mPopMenu = new PopMenu.Builder().columnCount(3).friction(10).resLayout(R.id.main_layout).attachToActivity(MainActivity.this)
                 .addMenuItem(new PopMenuItem("添加房源", getResources().getDrawable(R.drawable.menu_1)))
-                .addMenuItem(new PopMenuItem("租客登记", getResources().getDrawable(R.drawable.menu_2)))
-                .addMenuItem(new PopMenuItem("添加账单", getResources().getDrawable(R.drawable.menu_3)))
+                .addMenuItem(new PopMenuItem("营业报表", getResources().getDrawable(R.drawable.menu_2)))
+                .addMenuItem(new PopMenuItem("RN组件", getResources().getDrawable(R.drawable.menu_3)))
                 .addMenuItem(new PopMenuItem("分散式房源发布管理", getResources().getDrawable(R.drawable.menu_4)))
                 .addSubMenuItem(new PopMenuItem("集中式房源", getResources().getDrawable(R.drawable.submenu_1)))
                 .addSubMenuItem(new PopMenuItem("分散式房源合租", getResources().getDrawable(R.drawable.submenu_2)))
@@ -144,6 +145,13 @@ public class MainActivity extends BaseReactActivity implements OnImagePickerPerm
                             if (position == 0) {
                                 mPopMenu.showNext();
                             } else {
+                                if (position == 1) {
+                                    Intent intent = new Intent(MainActivity.this, RNActivity.class);
+                                    startActivity(intent);
+                                } else if (position == 2) {
+                                    Intent intent = new Intent(MainActivity.this, RNComponentActivity.class);
+                                    startActivity(intent);
+                                }
                                 mPopMenu.hide();
                             }
                         } else if (page == MENU_SECOND) {

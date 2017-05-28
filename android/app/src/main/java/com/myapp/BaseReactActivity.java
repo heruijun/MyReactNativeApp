@@ -27,7 +27,7 @@ public class BaseReactActivity extends AppCompatActivity implements DefaultHardw
     public ReactInstanceManager mReactInstanceManager;
 
     private final static int OVERLAY_PERMISSION_REQ_CODE = 10;
-    private boolean debugMode = false;
+    private boolean debugMode = true;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
