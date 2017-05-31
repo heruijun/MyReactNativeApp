@@ -13,10 +13,9 @@ import {
 } from 'react-native'
 import NavBar from '../component/NavBar'
 import ScrollableTabView, {DefaultTabBar, } from 'react-native-scrollable-tab-view'
+var GiftedListView = require('react-native-gifted-listview');
 import CodePush from "react-native-code-push"
 import px2dp from '../util'
-
-
 
 export default class OperatingStatement extends Component {
   constructor(props) {
