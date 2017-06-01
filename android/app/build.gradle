@@ -143,6 +143,7 @@ dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
     compile 'com.android.support:appcompat-v7:25.2.0'
     compile 'com.facebook.react:react-native:+'
+    compile 'com.android.support:multidex:1.0.1'
     // From node_modules
     compile 'org.jetbrains:annotations-java5:15.0'
     compile 'com.orhanobut:logger:1.15'
