@@ -1,5 +1,6 @@
-package com.myapp;
+package com.hrj.rn.runtime.common.app;
 
+import android.app.Application;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Build;
@@ -9,34 +10,45 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.KeyEvent;
 import android.widget.Toast;
 
+import com.example.com.modules.CustomReactPackage;
 import com.facebook.react.ReactInstanceManager;
 import com.facebook.react.ReactRootView;
+import com.facebook.react.common.LifecycleState;
 import com.facebook.react.modules.core.DefaultHardwareBackBtnHandler;
-import com.myapp.di.components.DaggerReactComponent;
-import com.myapp.di.modules.ReactModule;
-
-import org.jetbrains.annotations.NotNull;
-
-import javax.inject.Inject;
+import com.facebook.react.shell.MainReactPackage;
+import com.imagepicker.ImagePickerPackage;
+import com.microsoft.codepush.react.CodePush;
 
 public class BaseReactActivity extends AppCompatActivity implements DefaultHardwareBackBtnHandler {
 
     public ReactRootView mReactRootView;
 
-    @Inject
     public ReactInstanceManager mReactInstanceManager;
 
     private final static int OVERLAY_PERMISSION_REQ_CODE = 10;
     private boolean debugMode = true;
+
+    private Application mApplication;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mReactRootView = new ReactRootView(this);
 
-        DaggerReactComponent.builder()
-                .reactModule(new ReactModule(MainApplication.getInstance(), debugMode))
-                .build().inject(this);
+        mApplication = App.getInstance();
+
+        mReactInstanceManager = ReactInstanceManager.builder()
+                .setApplication(mApplication)
+                .setBundleAssetName("index.android.bundle")
+                .setJSMainModuleName("index.android")
+                .addPackage(new MainReactPackage())
+                .addPackage(new ImagePickerPackage())
+                .addPackage(new CustomReactPackage())
+                .addPackage(new CodePush("NFBvGszkFiqlbXrW3rlLi9aRc7x44ksvOXqog", mApplication.getApplicationContext(), com.facebook.react.BuildConfig.DEBUG, "http://192.168.77.120:3000/"))
+                .setJSBundleFile(CodePush.getJSBundleFile("index.android.bundle"))
+                .setUseDeveloperSupport(debugMode)
+                .setInitialLifecycleState(LifecycleState.RESUMED)
+                .build();
 
         if (debugMode == true) {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
@@ -82,7 +94,6 @@ public class BaseReactActivity extends AppCompatActivity implements DefaultHardw
         }
     }
 
-    @NotNull
     public ReactInstanceManager getReactInstanceManager() {
         return mReactInstanceManager;
     }

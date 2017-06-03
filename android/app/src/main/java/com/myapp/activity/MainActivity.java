@@ -13,8 +13,8 @@ import android.widget.FrameLayout;
 import android.widget.RelativeLayout;
 
 import com.facebook.react.modules.core.PermissionListener;
+import com.hrj.rn.runtime.common.app.BaseReactActivity;
 import com.imagepicker.permissions.OnImagePickerPermissionsCallback;
-import com.myapp.BaseReactActivity;
 import com.myapp.R;
 import com.myapp.fragment.HomeFragment;
 import com.myapp.fragment.MessageFragment;

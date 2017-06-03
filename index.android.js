@@ -17,7 +17,7 @@ import Home from './app/pages/Home'
 import Room from './app/pages/Room'
 import Manager from './app/pages/Manager'
 import Mine from './app/pages/Mine'
-import OperatingStatement from './app/pages/OperatingStatement'
+import OperatingStatement from './app/pages/operatingStatement/OperatingStatement'
 import RNComponent from './app/pages/RNComponent'
 
 AppRegistry.registerComponent('rntest', () => Home)

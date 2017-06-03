@@ -2,7 +2,7 @@ package com.myapp.activity;
 
 import android.os.Bundle;
 
-import com.myapp.BaseReactActivity;
+import com.hrj.rn.runtime.common.app.BaseReactActivity;
 
 /**
  * Created by heruijun on 2017/2/23.

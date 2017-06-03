@@ -1,6 +1,6 @@
 package com.myapp.fragment;
 
-import com.myapp.BaseRNFragment;
+import com.hrj.rn.runtime.common.app.BaseRNFragment;
 
 /**
  * Created by heruijun on 2017/3/8.
