@@ -1,4 +1,4 @@
-package com.example.com.modules;
+package com.hrj.rn.runtime.modules;
 
 import android.content.Context;
 import android.widget.Toast;

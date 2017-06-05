@@ -1,4 +1,4 @@
-package com.example.com.modules;
+package com.hrj.rn.runtime.modules;
 
 import com.facebook.react.ReactPackage;
 import com.facebook.react.bridge.JavaScriptModule;

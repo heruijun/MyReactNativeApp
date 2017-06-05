@@ -91,7 +91,6 @@ dependencies {
     compile project(':react-native-vector-icons')
     compile project(':react-native-image-picker')
     compile project(':react-native-code-push')
-    compile project(':react-native-common-modues')
     compile fileTree(dir: 'libs', include: ['*.jar'])
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
