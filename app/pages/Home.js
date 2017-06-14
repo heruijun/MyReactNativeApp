@@ -15,13 +15,14 @@ import NavBar from '../component/NavBar'
 import HomeGroup from '../component/HomeGroup'
 import CodePush from "react-native-code-push"
 import px2dp from '../util'
+import Toast from 'react-native-root-toast';
 
 export default class HomePage extends Component {
   constructor(props) {
     super(props)
     this.groups = [
       [
-        {name:"蘑菇分啊", subName:"173"},
+        {name:"蘑菇分", subName:"182"},
       ],
       [
         {name:"账户余额", subName:"99笔：237803.58元"},
@@ -49,22 +50,22 @@ export default class HomePage extends Component {
   codePushStatusDidChange = (syncStatus) => {
     switch(syncStatus) {
       case CodePush.SyncStatus.CHECKING_FOR_UPDATE:
-        Toast.show('正在检查更新');
+        // Toast.show('正在检查更新');
         break;
       case CodePush.SyncStatus.DOWNLOADING_PACKAGE:
-        Toast.show('用户确认更新');
+        // Toast.show('用户确认更新');
         break;
       case CodePush.SyncStatus.AWAITING_USER_ACTION:
-        Toast.show('等待用户确认');
+        // Toast.show('等待用户确认');
         break;
       case CodePush.SyncStatus.INSTALLING_UPDATE:
         // Toast.show('正在更新');
         break;
       case CodePush.SyncStatus.UP_TO_DATE:
-        Toast.show('已经是最新版本');
+        // Toast.show('已经是最新版本');
         break;
       case CodePush.SyncStatus.UPDATE_IGNORED:
-        Toast.show('用户取消更新');
+        // Toast.show('用户取消更新');
         break;
       case CodePush.SyncStatus.UPDATE_INSTALLED:
         Toast.show('安装更新成功，重启应用以完成更新');
@@ -76,7 +77,7 @@ export default class HomePage extends Component {
         Toast.show('未知错误');
         break;
     }
-  }
+  };
 
   componentDidMount() {
     CodePush.sync(
