@@ -26,7 +26,7 @@ public class BaseReactActivity extends AppCompatActivity implements DefaultHardw
     public ReactInstanceManager mReactInstanceManager;
 
     private final static int OVERLAY_PERMISSION_REQ_CODE = 10;
-    private boolean debugMode = true;
+    private boolean debugMode = false;
 
     private Application mApplication;
 
@@ -44,7 +44,8 @@ public class BaseReactActivity extends AppCompatActivity implements DefaultHardw
                 .addPackage(new MainReactPackage())
                 .addPackage(new ImagePickerPackage())
                 .addPackage(new CustomReactPackage())
-                .addPackage(new CodePush("NFBvGszkFiqlbXrW3rlLi9aRc7x44ksvOXqog", mApplication.getApplicationContext(), com.facebook.react.BuildConfig.DEBUG, "http://192.168.77.120:3000/"))
+                .addPackage(new CodePush("JJeFB7TGAdV92D7cPbEDynBYQwTO4ksvOXqog", mApplication.getApplicationContext(), com.facebook.react.BuildConfig.DEBUG, "http://192.168.60.118:3000/"))
+//                .addPackage(new CodePush("NFBvGszkFiqlbXrW3rlLi9aRc7x44ksvOXqog", mApplication.getApplicationContext(), com.facebook.react.BuildConfig.DEBUG, "http://192.168.77.120:3000/"))
                 .setJSBundleFile(CodePush.getJSBundleFile("index.android.bundle"))
                 .setUseDeveloperSupport(debugMode)
                 .setInitialLifecycleState(LifecycleState.RESUMED)

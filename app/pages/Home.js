@@ -46,11 +46,48 @@ export default class HomePage extends Component {
     ]
   }
 
+  codePushStatusDidChange = (syncStatus) => {
+    switch(syncStatus) {
+      case CodePush.SyncStatus.CHECKING_FOR_UPDATE:
+        Toast.show('正在检查更新');
+        break;
+      case CodePush.SyncStatus.DOWNLOADING_PACKAGE:
+        Toast.show('用户确认更新');
+        break;
+      case CodePush.SyncStatus.AWAITING_USER_ACTION:
+        Toast.show('等待用户确认');
+        break;
+      case CodePush.SyncStatus.INSTALLING_UPDATE:
+        // Toast.show('正在更新');
+        break;
+      case CodePush.SyncStatus.UP_TO_DATE:
+        Toast.show('已经是最新版本');
+        break;
+      case CodePush.SyncStatus.UPDATE_IGNORED:
+        Toast.show('用户取消更新');
+        break;
+      case CodePush.SyncStatus.UPDATE_INSTALLED:
+        Toast.show('安装更新成功，重启应用以完成更新');
+        setTimeout(function () {
+          BackAndroid.exitApp();
+        },2000);
+        break;
+      case CodePush.SyncStatus.UNKNOWN_ERROR:
+        Toast.show('未知错误');
+        break;
+    }
+  }
+
   componentDidMount() {
-    CodePush.sync({
-      installMode: CodePush.InstallMode.IMMEDIATE,
-      updateDialog: true
-    });
+    CodePush.sync(
+      {
+        installMode: CodePush.InstallMode.IMMEDIATE,
+        updateDialog: { title: '', optionalUpdateMessage: '蘑菇租房',
+        optionalIgnoreButtonLabel: '取消', optionalInstallButtonLabel: '更新',
+        appendReleaseDescription: true, descriptionPrefix: "\n\nChange log:\n"}
+      },
+      this.codePushStatusDidChange
+    )
   }
 
   _renderHeader(){

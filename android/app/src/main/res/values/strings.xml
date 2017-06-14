@@ -1,4 +1,5 @@
 <resources>
+    <string moduleConfig="true" name="reactNativeCodePush_androidDeploymentKey"></string>
     <string name="app_name">蘑菇伙伴</string>
     <string name="tab_1">Label 1</string>
     <string name="tab_2">Label 2</string>
