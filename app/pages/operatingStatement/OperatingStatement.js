@@ -10,13 +10,12 @@ import {
   View,
   Alert,
   RefreshControl,
-  TouchableWithoutFeedback,
   Image
 } from 'react-native'
 import NavBar from '../../component/NavBar'
 import ScrollableTabView, {DefaultTabBar, } from 'react-native-scrollable-tab-view'
-import CodePush from "react-native-code-push"
 import px2dp from '../../util'
+import Touch from '../../util/Touch'
 
 class Row extends React.Component {
   _onClick = () => {
@@ -25,13 +24,13 @@ class Row extends React.Component {
 
   render() {
     return (
-     <TouchableWithoutFeedback onPress={this._onClick} >
+     <Touch onPress={this._onClick} >
         <View style={styles.row}>
           <Text style={styles.text}>
             {this.props.data.text + ' (' + this.props.data.clicks + ' clicks)'}
           </Text>
         </View>
-      </TouchableWithoutFeedback>
+      </Touch>
     );
   }
 }
@@ -42,10 +41,7 @@ export default class OperatingStatement extends Component {
   }
 
   componentDidMount() {
-    CodePush.sync({
-      installMode: CodePush.InstallMode.IMMEDIATE,
-      updateDialog: true
-    });
+    
   }
 
   static title = '<RefreshControl>';

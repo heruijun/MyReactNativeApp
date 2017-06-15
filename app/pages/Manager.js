@@ -8,12 +8,11 @@ import {
   View,
   Image,
   ScrollView,
-  NativeModules,
-  TouchableNativeFeedback
+  NativeModules
 } from 'react-native'
-import CodePush from "react-native-code-push"
 import NavBar from '../component/NavBar'
 import LocalImg from '../images'
+import Touch from '../util/Touch'
 
 const AUTH_BTNS = [
   {
@@ -57,10 +56,6 @@ export default class Manager extends Component {
   }
 
   componentDidMount() {
-    CodePush.sync({
-      installMode: CodePush.InstallMode.IMMEDIATE,
-      updateDialog: true
-    });
     NativeModules.AuthControlNativeModule.getAuthCodes('manager', (response) => {
       this.setState({
         authCodes: response
@@ -71,9 +66,9 @@ export default class Manager extends Component {
   _renderItem(code) {
     if(code === AUTH_BTNS[0].auth && this.state.authCodes.includes(code)) {
       return (
-        <TouchableNativeFeedback
+        <Touch
           onPress={this._onPressButton}
-          background={TouchableNativeFeedback.SelectableBackground()}>
+          background={Touch.SelectableBackground()}>
           <View style={[styles.sbu_flex, styles.sbu_borderBottom, styles.sbu_borderRight]}>
             <View style={[styles.sub_con_flex]}>
               <Image style={[styles.sbu_icon_img]} source={{uri:AUTH_BTNS[0].data}}></Image>
@@ -82,13 +77,13 @@ export default class Manager extends Component {
               <Text style={[styles.font16]}>{ AUTH_BTNS[0].name }</Text>
             </View>
           </View>
-        </TouchableNativeFeedback>
+        </Touch>
       )
     } else if(code === AUTH_BTNS[1].auth && this.state.authCodes.includes(code)) {
       return (
-        <TouchableNativeFeedback
+        <Touch
           onPress={this._onPressButton}
-          background={TouchableNativeFeedback.SelectableBackground()}>
+          background={Touch.SelectableBackground()}>
           <View style={[styles.sbu_flex, styles.sbu_borderBottom, styles.sbu_borderRight]}>
             <View style={[styles.sub_con_flex]}>
               <Image style={[styles.sbu_icon_img]} source={{uri:AUTH_BTNS[1].data}}></Image>
@@ -97,13 +92,13 @@ export default class Manager extends Component {
               <Text style={[styles.font16]}>{ AUTH_BTNS[1].name }</Text>
             </View>
           </View>
-        </TouchableNativeFeedback>
+        </Touch>
       )
     } else if(code === AUTH_BTNS[2].auth && this.state.authCodes.includes(code)) {
       return (
-        <TouchableNativeFeedback
+        <Touch
           onPress={this._onPressButton}
-          background={TouchableNativeFeedback.SelectableBackground()}>
+          background={Touch.SelectableBackground()}>
           <View style={[styles.sbu_flex, styles.sbu_borderBottom]}>
             <View style={[styles.sub_con_flex]}>
               <Image style={[styles.sbu_icon_img]} source={{uri:AUTH_BTNS[2].data}}></Image>
@@ -113,13 +108,13 @@ export default class Manager extends Component {
               <Text style={[styles.font16]}>(租期中)</Text>
             </View>
           </View>
-        </TouchableNativeFeedback>
+        </Touch>
       )
     } else if(code === AUTH_BTNS[3].auth && this.state.authCodes.includes(code)) {
       return (
-        <TouchableNativeFeedback
+        <Touch
           onPress={this._onPressButton}
-          background={TouchableNativeFeedback.SelectableBackground()}>
+          background={Touch.SelectableBackground()}>
           <View style={[styles.sbu_flex, styles.sbu_borderBottom, styles.sbu_borderRight]}>
             <View style={[styles.sub_con_flex]}>
               <Image style={[styles.sbu_icon_img]} source={{uri:AUTH_BTNS[3].data}}></Image>
@@ -129,13 +124,13 @@ export default class Manager extends Component {
               <Text style={[styles.font16]}>(已退房)</Text>
             </View>
           </View>
-        </TouchableNativeFeedback>
+        </Touch>
       )
     } else if(code === AUTH_BTNS[4].auth && this.state.authCodes.includes(code)) {
       return (
-        <TouchableNativeFeedback
+        <Touch
           onPress={this._onPressButton}
-          background={TouchableNativeFeedback.SelectableBackground()}>
+          background={Touch.SelectableBackground()}>
           <View style={[styles.sbu_flex, styles.sbu_borderBottom, styles.sbu_borderRight]}>
             <View style={[styles.sub_con_flex]}>
               <Image style={[styles.sbu_icon_img]} source={{uri:AUTH_BTNS[4].data}}></Image>
@@ -144,13 +139,13 @@ export default class Manager extends Component {
               <Text style={[styles.font16]}>{ AUTH_BTNS[4].name }</Text>
             </View>
           </View>
-        </TouchableNativeFeedback>
+        </Touch>
       )
     } else if(code === AUTH_BTNS[5].auth && this.state.authCodes.includes(code)) {
       return (
-        <TouchableNativeFeedback
+        <Touch
           onPress={this._onPressButton}
-          background={TouchableNativeFeedback.SelectableBackground()}>
+          background={Touch.SelectableBackground()}>
           <View style={[styles.sbu_flex, styles.sbu_borderBottom]}>
             <View style={[styles.sub_con_flex]}>
               <Image style={[styles.sbu_icon_img]} source={{uri:AUTH_BTNS[5].data}}></Image>
@@ -159,7 +154,7 @@ export default class Manager extends Component {
               <Text style={[styles.font16]}>{ AUTH_BTNS[5].name }</Text>
             </View>
           </View>
-        </TouchableNativeFeedback>
+        </Touch>
       )
     }
   }

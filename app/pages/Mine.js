@@ -10,10 +10,6 @@ import {
   Dimensions,
   Platform,
   AlertIOS,
-  TouchableOpacity,
-  TouchableHighlight,
-  TouchableNativeFeedback,
-  TouchableWithoutFeedback,
   RefreshControl,
   NativeModules
 } from 'react-native'
@@ -22,8 +18,8 @@ import NavBar from '../component/NavBar'
 import Item from '../component/Item'
 import px2dp from '../util'
 import Icon from 'react-native-vector-icons/Ionicons'
-import CodePush from "react-native-code-push"
 import ImagePicker from 'react-native-image-picker'
+import Touch from '../util/Touch'
 
 var options = {
   title: '设置头像',
@@ -43,10 +39,6 @@ export default class Mine extends Component {
   }
 
   componentDidMount() {
-    CodePush.sync({
-      installMode: CodePush.InstallMode.IMMEDIATE,
-      updateDialog: true
-    })
     this.fetchUserInfo().done()
   }
 
@@ -112,12 +104,12 @@ export default class Mine extends Component {
           rightIcon="ios-settings-outline"
           rightPress={this.rightPress.bind(this)}
         />
-        <TouchableNativeFeedback onPress={this.goUserInfo.bind(this)}>
+        <Touch onPress={this.goUserInfo.bind(this)}>
           <View style={styles.userHead}>
             <View style={{flex: 1,flexDirection: "row"}}>
-              <TouchableNativeFeedback onPress={this._uploadAvatar.bind(this)}>
+              <Touch onPress={this._uploadAvatar.bind(this)}>
                 <Image source={this.state.avatarSource} style={{width: px2dp(64), height: px2dp(64), borderRadius: px2dp(30)}}/>
-              </TouchableNativeFeedback>
+              </Touch>
               <View style={{flex: 1, marginLeft: 10, paddingVertical: 5}}>
                 <Text style={{fontSize: px2dp(18)}}>玉博</Text>
                 <View style={{marginTop: px2dp(10), flexDirection: "row"}}>
@@ -127,7 +119,7 @@ export default class Mine extends Component {
             </View>
             <Icon name="ios-arrow-forward-outline" size={px2dp(22)} color="#bbb" />
           </View>
-        </TouchableNativeFeedback>
+        </Touch>
         <View>
           {this._renderListItem()}
         </View>

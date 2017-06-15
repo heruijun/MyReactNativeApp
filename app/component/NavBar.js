@@ -9,12 +9,11 @@ import {
   View,
   Text,
   Animated,
-  TouchableOpacity,
-  TouchableNativeFeedback,
   Platform
 } from 'react-native'
 import px2dp from '../util'
 import Icon from 'react-native-vector-icons/Ionicons'
+import Touch from '../util/Touch'
 
 export default class NavBar extends Component{
   static propTypes = {
@@ -29,19 +28,11 @@ export default class NavBar extends Component{
   renderBtn(pos){
     let render = (obj) => {
       const { name, onPress } = obj
-      if(Platform.OS === 'android'){
-        return (
-          <TouchableNativeFeedback onPress={onPress} style={styles.btn}>
-            <Icon name={name} size={px2dp(26)} color="#fff" />
-          </TouchableNativeFeedback>
-        )
-      }else{
-        return (
-          <TouchableOpacity onPress={onPress} style={styles.btn}>
-            <Icon name={name} size={px2dp(26)} color="#fff" />
-          </TouchableOpacity>
-        )
-      }
+      return (
+        <Touch onPress={onPress} style={styles.btn}>
+          <Icon name={name} size={px2dp(26)} color="#fff" />
+        </Touch>
+      )
     }
     if(pos == "left"){
       if(this.props.leftIcon){

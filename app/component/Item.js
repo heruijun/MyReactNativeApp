@@ -8,9 +8,7 @@ import {
   StyleSheet,
   Dimensions,
   Platform,
-  TouchableHighlight,
-  AlertIOS,
-  TouchableNativeFeedback
+  AlertIOS
 } from 'react-native'
 import px2dp from '../util'
 import Button from './Button'
