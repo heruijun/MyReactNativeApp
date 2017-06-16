@@ -1,18 +1,17 @@
 package com.myapp.activity;
 
-import android.os.Bundle;
-
 import com.hrj.rn.runtime.common.app.BaseReactActivity;
+
+import javax.annotation.Nullable;
 
 /**
  * Created by heruijun on 2017/2/23.
  */
 public class RNComponentActivity extends BaseReactActivity {
-
+    
+    @Nullable
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        mReactRootView.startReactApplication(mReactInstanceManager, "rnComponent", null);
-        setContentView(mReactRootView);
+    protected String getMainComponentName() {
+        return "rnComponent";
     }
 }

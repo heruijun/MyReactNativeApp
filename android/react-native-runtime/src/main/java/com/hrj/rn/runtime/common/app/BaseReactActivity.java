@@ -1,102 +1,66 @@
 package com.hrj.rn.runtime.common.app;
 
-import android.app.Application;
 import android.content.Intent;
-import android.net.Uri;
-import android.os.Build;
 import android.os.Bundle;
-import android.provider.Settings;
 import android.support.v7.app.AppCompatActivity;
 import android.view.KeyEvent;
-import android.widget.Toast;
 
 import com.facebook.react.ReactInstanceManager;
-import com.facebook.react.ReactRootView;
-import com.facebook.react.common.LifecycleState;
 import com.facebook.react.modules.core.DefaultHardwareBackBtnHandler;
-import com.facebook.react.shell.MainReactPackage;
-import com.hrj.rn.runtime.modules.CustomReactPackage;
-import com.imagepicker.ImagePickerPackage;
-import com.microsoft.codepush.react.CodePush;
+import com.hrj.rn.runtime.common.app.preloadrn.PrelaodRNDelegate;
+
+import javax.annotation.Nullable;
 
 public class BaseReactActivity extends AppCompatActivity implements DefaultHardwareBackBtnHandler {
 
-    public ReactRootView mReactRootView;
+    private PrelaodRNDelegate mPrelaodRNDelegate;
 
-    public ReactInstanceManager mReactInstanceManager;
+    public BaseReactActivity() {
+        mPrelaodRNDelegate = createPreloadRNDelegate();
+    }
 
-    private final static int OVERLAY_PERMISSION_REQ_CODE = 10;
-    private boolean debugMode = false;
+    private PrelaodRNDelegate createPreloadRNDelegate() {
+        return new PrelaodRNDelegate(this, getMainComponentName());
+    }
 
-    private Application mApplication;
+    @Nullable
+    protected String getMainComponentName() {
+        return null;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        mReactRootView = new ReactRootView(this);
-
-        mApplication = App.getInstance();
-
-        mReactInstanceManager = ReactInstanceManager.builder()
-                .setApplication(mApplication)
-                .setBundleAssetName("index.android.bundle")
-                .setJSMainModuleName("index.android")
-                .addPackage(new MainReactPackage())
-                .addPackage(new ImagePickerPackage())
-                .addPackage(new CustomReactPackage())
-                .addPackage(new CodePush("JJeFB7TGAdV92D7cPbEDynBYQwTO4ksvOXqog", mApplication.getApplicationContext(), com.facebook.react.BuildConfig.DEBUG, "http://192.168.60.118:3000/"))
-//                .addPackage(new CodePush("NFBvGszkFiqlbXrW3rlLi9aRc7x44ksvOXqog", mApplication.getApplicationContext(), com.facebook.react.BuildConfig.DEBUG, "http://192.168.77.120:3000/"))
-                .setJSBundleFile(CodePush.getJSBundleFile("index.android.bundle"))
-                .setUseDeveloperSupport(debugMode)
-                .setInitialLifecycleState(LifecycleState.RESUMED)
-                .build();
-
-        if (debugMode == true) {
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                if (!Settings.canDrawOverlays(this)) {
-                    Intent intent = new Intent(Settings.ACTION_MANAGE_OVERLAY_PERMISSION,
-                            Uri.parse("package:" + getPackageName()));
-                    startActivityForResult(intent, OVERLAY_PERMISSION_REQ_CODE);
-                }
-            }
-        }
+        mPrelaodRNDelegate.onCreate();
     }
 
     @Override
     protected void onPause() {
         super.onPause();
-        if (mReactInstanceManager != null) {
-            mReactInstanceManager.onHostPause(this);
-        }
+        mPrelaodRNDelegate.onPause();
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-        if (mReactInstanceManager != null) {
-            mReactInstanceManager.onHostResume(this, this);
-        }
+        mPrelaodRNDelegate.onResume();
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        if (mReactInstanceManager != null) {
-            mReactInstanceManager.onHostDestroy();
-        }
+        mPrelaodRNDelegate.onDestroy();
     }
 
     @Override
     public void onBackPressed() {
-        if (mReactInstanceManager != null) {
-            mReactInstanceManager.onBackPressed();
-        } else {
+        if (!mPrelaodRNDelegate.onBackPressed()) {
             super.onBackPressed();
         }
     }
 
     public ReactInstanceManager getReactInstanceManager() {
-        return mReactInstanceManager;
+        return mPrelaodRNDelegate.getReactInstanceManager();
     }
 
     @Override
@@ -106,26 +70,12 @@ public class BaseReactActivity extends AppCompatActivity implements DefaultHardw
 
     @Override
     public boolean onKeyUp(int keyCode, KeyEvent event) {
-        if (keyCode == KeyEvent.KEYCODE_MENU && mReactInstanceManager != null) {
-            mReactInstanceManager.showDevOptionsDialog();
-            return true;
-        }
-        return super.onKeyUp(keyCode, event);
+        return mPrelaodRNDelegate.onRNKeyUp(keyCode) || super.onKeyUp(keyCode, event);
     }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        mReactInstanceManager.onActivityResult(this, requestCode, resultCode, data);
-
-        if (debugMode == true) {
-            if (requestCode == OVERLAY_PERMISSION_REQ_CODE) {
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                    if (!Settings.canDrawOverlays(this)) {
-                        Toast.makeText(BaseReactActivity.this, "not granted", Toast.LENGTH_SHORT);
-                    }
-                }
-            }
-        }
+        mPrelaodRNDelegate.onActivityResult(requestCode, resultCode, data);
     }
 }

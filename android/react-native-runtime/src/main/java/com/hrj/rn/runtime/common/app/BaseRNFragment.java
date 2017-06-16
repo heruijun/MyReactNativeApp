@@ -15,7 +15,6 @@ public abstract class BaseRNFragment extends Fragment {
 
     private ReactRootView mReactRootView;
     private ReactInstanceManager mReactInstanceManager;
-
     public abstract String getMainComponentName();
 
     @Override
