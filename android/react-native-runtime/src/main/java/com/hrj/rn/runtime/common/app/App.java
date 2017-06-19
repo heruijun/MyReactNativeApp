@@ -74,4 +74,8 @@ public class App extends MultiDexApplication implements ReactApplication {
         LeakCanary.install(this);
         // Normal app init code...
     }
+
+    public String getAppPackageName() {
+        return this.getPackageName();
+    }
 }

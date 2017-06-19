@@ -22,7 +22,7 @@ export default class HomePage extends Component {
     super(props)
     this.groups = [
       [
-        {name:"蘑菇分", subName:"182"},
+        {name:"蘑菇分换bundle", subName:"182"},
       ],
       [
         {name:"账户余额", subName:"99笔：237803.58元"},
